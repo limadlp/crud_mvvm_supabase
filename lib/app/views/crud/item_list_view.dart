@@ -3,21 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ItemListView extends StatelessWidget {
+  const ItemListView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<ItemViewModel>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Items')),
+      appBar: AppBar(title: const Text('Items')),
       body: FutureBuilder(
         future: viewModel.loadItems(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (viewModel.items.isEmpty) {
-            return Center(child: Text('No items found.'));
+            return const Center(child: Text('No items found.'));
           }
 
           return ListView.builder(
@@ -27,7 +29,7 @@ class ItemListView extends StatelessWidget {
               return ListTile(
                 title: Text(item['name']),
                 trailing: IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: const Icon(Icons.delete),
                   onPressed: () => viewModel.deleteItem(item['id']),
                 ),
               );
@@ -39,7 +41,7 @@ class ItemListView extends StatelessWidget {
         onPressed: () {
           viewModel.addItem({'name': 'New Item'});
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

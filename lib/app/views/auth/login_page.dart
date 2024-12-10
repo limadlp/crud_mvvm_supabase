@@ -1,5 +1,4 @@
 import 'package:crud_mvvm_supabase/app/viewmodels/auth_view_model.dart';
-import 'package:crud_mvvm_supabase/app/views/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
