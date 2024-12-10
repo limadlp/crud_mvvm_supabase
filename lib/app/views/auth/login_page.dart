@@ -1,6 +1,7 @@
 import 'package:crud_mvvm_supabase/app/viewmodels/auth_view_model.dart';
 import 'package:crud_mvvm_supabase/app/views/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'register_page.dart';
 
@@ -17,8 +18,7 @@ class LoginPage extends StatelessWidget {
     void login() async {
       await authViewModel.signIn(emailController.text, passwordController.text);
       if (authViewModel.errorMessage.isEmpty && authViewModel.isLoggedIn()) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const HomePage()));
+        context.goNamed('home');
       }
     }
 
