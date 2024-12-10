@@ -1,5 +1,6 @@
 import 'package:crud_mvvm_supabase/app/viewmodels/auth_view_model.dart';
 import 'package:crud_mvvm_supabase/app/views/auth/login_page.dart';
+import 'package:crud_mvvm_supabase/app/views/crud/item_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,8 +28,18 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child:
+        child: Column(
+          children: [
             Text('Welcome, ${authViewModel.getCurrentUserEmail() ?? 'User'}!'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => ItemListView()));
+              },
+              child: const Text('Go to Items'),
+            ),
+          ],
+        ),
       ),
     );
   }
